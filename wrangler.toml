@@ -1,0 +1,3 @@
+name = "diamond-hand-capital"
+compatibility_date = "2025-06-07"
+main = "index.js"
