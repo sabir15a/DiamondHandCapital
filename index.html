@@ -37,7 +37,7 @@
       z-index: 1000;
     }
     .logo { display: flex; align-items: center; }
-    .logo img { height: 80px; width: auto; margin-right: 0.75rem; }
+    .logo img { height: 50px; margin-right: 0.75rem; }
     .logo span {
       font-family: 'Playfair Display', serif;
       font-size: 1.75rem; font-weight: 700;
@@ -47,12 +47,14 @@
     nav a { position: relative; font-weight: 500; color: var(--clr-muted); transition: color var(--transition); }
     nav a:hover, nav a.active { color: var(--clr-primary); }
     nav a::after {
-      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--clr-primary); transition: width var(--transition);
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--clr-primary);
+      transition: width var(--transition);
     }
     nav a:hover::after, nav a.active::after { width: 100%; }
 
     /* Hero Banner */
-    .banner-image { margin-top: 100px; }
+    .banner-image { margin-top: 80px; }
     .banner-image img { width: 100%; max-height: 600px; object-fit: cover; }
 
     /* Sections */
@@ -77,7 +79,6 @@
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2rem; }
     .property-card { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform var(--transition), box-shadow var(--transition); }
     .property-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
-    .property-card a { display: block; color: inherit; }
     .property-card img { height: 200px; object-fit: cover; }
     .property-info { background: var(--clr-light); padding: 1.5rem; }
     .property-info h4 { font-family: 'Playfair Display', serif; font-size: 1.125rem; margin-bottom: 0.5rem; }
@@ -94,4 +95,96 @@
     .team-member p { color: var(--clr-muted); font-size: 0.9rem; }
 
     /* Footer */
-    footer { text-align: center; color: var(--clr-muted); font-size: 0
+    footer { text-align: center; color: var(--clr-muted); font-size: 0.9rem; margin-top: 2rem; }
+    .socials a { margin: 0 0.5rem; font-size: 1.2rem; color: var(--clr-primary); transition: color var(--transition); }
+    .socials a:hover { color: #004099; }
+
+    @media (max-width: 768px) { nav ul { gap: 1rem; } header { padding: 0.75rem 1rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://github.com/sabir15a/DiamondHandCapital/blob/main/assets/logo.png?raw=true" alt="Diamond Hand Capital Logo">
+      <span>Diamond Hand Capital</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#features">Our Approach</a></li>
+        <li><a href="#listings">Opportunities</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="banner-image">
+    <img src="https://raw.githubusercontent.com/sabir15a/DiamondHandCapital/eee4f05e56b862d5c146356b6441c9d42bd63be3/assets/keyshouse.png" alt="Florida Keys House Over Water">
+  </section>
+
+  <!-- Mission Statement -->
+  <section id="mission" class="mission container">
+    <div class="mission-content">
+      <p>At Diamond Hand Capital، we build long-term value through smart investments and strategic real estate development. Our name reflects the strength، clarity، and resilience we bring to every opportunity.</p>
+      <p>We focus on high-potential ventures across public and private markets، while leveraging deep real estate expertise to deliver strong، sustainable returns. Whether it’s asset management، acquisitions، or development، our approach is disciplined، data-driven، and guided by long-term vision.</p>
+      <p>Grounded in integrity and committed to transparency، we help our partners grow with confidence.</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="features container">
+    <div class="feature-card"><ion-icon name="bar-chart-outline"></ion-icon><h3>Data-Driven Analysis</h3><p>Rigorous market research and financial modeling for optimized returns.</p></div>
+    <div class="feature-card"><ion-icon name="trophy-outline"></ion-icon><h3>Proven Track Record</h3><p>Years of successful property acquisitions and superior portfolio performance.</p></div>
+    <div class="feature-card"><ion-icon name="people-outline"></ion-icon><h3>Full-Service Management</h3><p>End-to-end oversight: from acquisition to guest experience and maintenance.</p></div>
+  </section>
+
+  <!-- Listings -->
+  <section id="listings" class="listings container">
+    <h2>Highlighted Opportunities</h2>
+    <div class="cards">
+      <div class="property-card">
+        <img src="https://source.unsplash.com/400x300/?islamorada،house" alt="Islamorada Retreat">
+        <div class="property-info"><h4>Islamorada Beachfront Retreat</h4><p>Projected 12% annual ROI • 3BR/2BA • Private beach access</p><button>Learn More</button></div>
+      </div>
+      <div class="property-card">
+        <img src="https://source.unsplash.com/400x300/?marathon،waterfront" alt="Marathon Villa">
+        <div class="property-info"><h4>Marathon Waterfront Villa</h4><p>Projected 14% annual ROI • 4BR/3BA • Private dock</p><button>Learn More</button></div>
+      </div>
+      <div class="property-card">
+        <img src="https://source.unsplash.com/400x300/?key-west،cottage" alt="Key West Cottage">
+        <div class="property-info"><h4>Key West Sunset Cottage</h4><p>Projected 11% annual ROI • 2BR/1BA • Stunning sunset views</p><button>Learn More</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet the Team -->
+  <section id="team" class="team container">
+    <h2>Meet the Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Arif Sabir">
+        <h4>Arif Sabir</h4><p>Founding Partner</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Joshua Emerick">
+        <h4>Joshua Emerick</h4><p>Founding Partner</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Andy Jimenez">
+        <h4>Andy Jimenez</h4><p>Founding Partner</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="container">
+    <p>&copy; 2025 Diamond Hand Capital</p>
+    <p>Email: info@diamondhandcapital.com | Phone: (555) 123-4567</p>
+    <div class="socials">
+      <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+    </div>
+  </footer>
+</body>
+</html>
