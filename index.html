@@ -4,152 +4,187 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diamond Hand Capital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <!-- Ionicons for icons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <style>
-    /* Reset & Base */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; color: #1a1a1a; line-height: 1.6; background: #fff; }
-    img { display: block; max-width: 100%; }
+    :root {
+      --clr-primary: #0056b3;
+      --clr-accent: #ffca28;
+      --clr-bg: #f5f3ee;
+      --clr-light: #ffffff;
+      --clr-muted: #6b7280;
+      --transition: 0.3s ease;
+      --radius: 0.75rem;
+      --shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--clr-bg); color: #333; scroll-behavior: smooth; }
     a { text-decoration: none; color: inherit; }
-    .container { width: 90%; max-width: 1200px; margin: 0 auto; position: relative; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; }
 
-    /* Navigation */
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
-    .nav-logo img { height: 50px; }
-    .nav-links { display: flex; gap: 1.5rem; }
-    .nav-links a { font-weight: 600; color: #555; transition: color 0.2s; }
-    .nav-links a:hover { color: #021c3a; }
+    /* Header */
+    header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px);
+             box-shadow: var(--shadow); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 40px; margin-right: 0.75rem; }
+    .logo span { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700; color: var(--clr-primary); letter-spacing: 1px; }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { position: relative; font-weight: 500; color: var(--clr-muted); transition: color var(--transition); }
+    nav a:hover, nav a.active { color: var(--clr-primary); }
+    nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--clr-primary); transition: width var(--transition); }
+    nav a:hover::after, nav a.active::after { width: 100%; }
 
-    /* Hero */
-    .hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; padding: 4rem 0; }
-    .hero-img { border-radius: 1rem; overflow: hidden; }
-    .hero-img img { height: 400px; object-fit: cover; }
-    .hero-content h1 { font-size: 2.5rem; color: #021c3a; margin-bottom: 1rem; }
-    .hero-content p { font-size: 1.125rem; margin-bottom: 2rem; color: #555; }
-    .btn-primary { background: #021c3a; color: #fff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; transition: background 0.3s; }
-    .btn-primary:hover { background: #003060; }
+    /* Banner (scenic view) */
+    .banner { height: calc(100vh - 80px); margin-top: 80px;
+              background: url('/mnt/data/A_high-resolution_digital_photograph_captures_a_tw.png') center/cover no-repeat;
+              display: flex; align-items: center; justify-content: center; }
+    .banner h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--clr-light);
+                  text-shadow: 0 2px 6px rgba(0,0,0,0.4); text-align: center; }
 
-    /* Section Titles */
-    .section-title { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 1rem; color: #021c3a; }
+    /* Sections */
+    section { padding: 4rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
 
     /* Mission */
-    .mission { padding: 4rem 0; }
-    .mission p { max-width: 800px; margin: 1rem auto; font-size: 1.125rem; color: #1a1a1a; }
-    .mission-icons { display: block; margin: 2rem auto; max-width: 400px; }
+    .mission { background: var(--clr-light); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .mission-content { text-align: center; padding: 2rem; color: #444; line-height: 1.6; }
+    .mission-content p { margin-bottom: 1.25rem; }
 
-    /* Features */
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; padding: 4rem 0; }
-    .feature-card { background: #f9f9f9; border-radius: 1rem; padding: 2rem; text-align: center; transition: transform 0.3s; }
-    .feature-card:hover { transform: translateY(-5px); }
-    .feature-card h3 { font-size: 1.25rem; margin-bottom: 1rem; color: #021c3a; }
-    .feature-card p { color: #555; }
+    /* Feature Cards */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 2rem; }
+    .feature-card { background: var(--clr-light); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow);
+                     text-align: center; transition: transform var(--transition); }
+    .feature-card:hover { transform: translateY(-8px); }
+    .feature-card ion-icon { font-size: 2.5rem; color: var(--clr-primary); margin-bottom: 1rem; }
+    .feature-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #222; font-family: 'Playfair Display', serif; }
+    .feature-card p { color: var(--clr-muted); }
 
-    /* Team */
-    .team { padding: 4rem 0; }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .team-member { text-align: center; }
-    .team-member img { border-radius: 50%; width: 120px; height: 120px; object-fit: cover; margin: 0 auto 1rem; }
-    .team-member h4 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #021c3a; }
-    .team-member p { color: #777; font-size: 0.95rem; }
+    /* Listings */
+    .listings h2 { text-align: center; margin-bottom: 2rem; color: var(--clr-primary); font-family: 'Playfair Display', serif; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2rem; }
+    .property-card { position: relative; overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow);
+                      transition: transform var(--transition), box-shadow var(--transition); }
+    .property-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+    .property-card img { height: 200px; object-fit: cover; }
+    .property-info { background: var(--clr-light); padding: 1.5rem; }
+    .property-info h4 { font-size: 1.125rem; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif; }
+    .property-info p { font-size: 0.95rem; margin-bottom: 1rem; color: var(--clr-muted); }
+    .property-info button { background: var(--clr-primary); color: var(--clr-light); padding: 0.75rem 1.5rem;
+                             border-radius: var(--radius); font-weight: 600; transition: background var(--transition); }
+    .property-info button:hover { background: #004099; }
 
-    /* Contact */
-    .contact { background: #021c3a; color: #fff; padding: 4rem 0; text-align: center; }
-    .contact p { margin-bottom: 2rem; color: #ddd; font-size: 1.125rem; }
+    /* Founders */
+    .founders-content { background: var(--clr-light); border-radius: var(--radius); box-shadow: var(--shadow);
+                         text-align: center; padding: 2.5rem; }
+    .founders-content h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--clr-primary); font-family: 'Playfair Display', serif; }
+    .founders-content p { color: var(--clr-muted); font-size: 1rem; line-height: 1.6; }
 
     /* Footer */
-    footer { background: #f1f1f1; padding: 1.5rem 0; text-align: center; font-size: 0.875rem; color: #555; }
+    footer { text-align: center; color: var(--clr-muted); font-size: 0.9rem; margin-top: 2rem; }
+    .socials a { margin: 0 0.5rem; color: var(--clr-primary); font-size: 1.2rem; transition: color var(--transition); }
+    .socials a:hover { color: #004099; }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-img img { height: 250px; }
+      .banner h1 { font-size: 2.25rem; padding: 0 1rem; }
+      nav ul { gap: 1rem; }
+      header { padding: 0.75rem 1rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="container">
-    <div class="nav-logo">
-      <img src="assets/logo.svg" alt="Diamond Hand Capital Logo">
+  <header>
+    <div class="logo">
+      <img src="/mnt/data/Screen%20Shot%202025-06-07%20at%2010.18.15%20AM.png" alt="Logo">
+      <span>Diamond Hand Capital</span>
     </div>
-    <div class="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#mission">Mission</a>
-      <a href="#mission">Why Invest</a>
-      <a href="#team">Partners</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+    <nav>
+      <ul>
+        <li><a href="#features">Our Approach</a></li>
+        <li><a href="#listings">Opportunities</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero container">
-    <div class="hero-content">
-      <h1>Exclusive Florida Keys Investments</h1>
-      <p>Partner with Arif Sabir, Joshua Emerick, and Andy Jimenez to secure high-return vacation rentals in the most sought-after waterfront locations.</p>
-      <a href="#contact" class="btn-primary">Let's Talk</a>
-    </div>
-    <div class="hero-img">
-      <img src="https://source.unsplash.com/1200x800/?florida%20keys,house,water" alt="Florida Keys house overlooking the water">
-    </div>
+  <section class="banner">
+    <h1>Institutional-Grade Real Estate Investments</h1>
   </section>
 
-  <!-- Mission Section -->
   <section id="mission" class="mission container">
-    <h2 class="section-title">Our Mission</h2>
-    <p>At Diamond Hand Capital, we build long-term value through smart investments and strategic real estate development. Our name reflects the strength, clarity, and resilience we bring to every opportunity.</p>
-    <p>We focus on high-potential ventures across public and private markets, while leveraging deep real estate expertise to deliver strong, sustainable returns. Whether it’s asset management, acquisitions, or development, our approach is disciplined, data-driven, and guided by long-term vision.</p>
-    <p>Grounded in integrity and committed to transparency, we help our partners grow with confidence.</p>
-    <img class="mission-icons" src="assets/mission-icons.svg" alt="Our Approach Icons">
+    <div class="mission-content">
+      <p>At Diamond Hand Capital, we build long-term value through smart investments and strategic real estate development. Our name reflects the strength, clarity, and resilience we bring to every opportunity.</p>
+      <p>We focus on high-potential ventures across public and private markets, while leveraging deep real estate expertise to deliver strong, sustainable returns. Whether it’s asset management, acquisitions, or development, our approach is disciplined, data-driven, and guided by long-term vision.</p>
+      <p>Grounded in integrity and committed to transparency, we help our partners grow with confidence.</p>
+    </div>
   </section>
 
-  <!-- Features Section -->
   <section id="features" class="features container">
     <div class="feature-card">
-      <h3>Market Expertise</h3>
-      <p>Deep local insights identify top-performing properties and optimize occupancy.</p>
+      <ion-icon name="bar-chart-outline"></ion-icon>
+      <h3>Data-Driven Analysis</h3>
+      <p>Rigorous market research and financial modeling for optimized returns.</p>
     </div>
     <div class="feature-card">
-      <h3>Turnkey Management</h3>
-      <p>Hands-on property services ensuring exceptional guest experiences and maintenance.</p>
+      <ion-icon name="trophy-outline"></ion-icon>
+      <h3>Proven Track Record</h3>
+      <p>Years of successful property acquisitions and superior portfolio performance.</p>
     </div>
     <div class="feature-card">
-      <h3>Transparent Returns</h3>
-      <p>Clear reporting with detailed analytics to track financial performance.</p>
+      <ion-icon name="people-outline"></ion-icon>
+      <h3>Full-Service Management</h3>
+      <p>End-to-end oversight: from acquisition to guest experience and maintenance.</p>
     </div>
   </section>
 
-  <!-- Team Section -->
-  <section id="team" class="team container">
-    <h2 class="section-title">Your Founding Partners</h2>
-    <div class="team-grid">
-      <div class="team-member">
-        <img src="https://source.unsplash.com/collection/888146/120x120?sig=1" alt="Arif Sabir">
-        <h4>Arif Sabir</h4>
-        <p>Founding Partner</p>
+  <section id="listings" class="listings container">
+    <h2>Highlighted Opportunities</h2>
+    <div class="cards">
+      <div class="property-card">
+        <img src="https://source.unsplash.com/400x300/?islamorada,house" alt="Islamorada Retreat">
+        <div class="property-info">
+          <h4>Islamorada Beachfront Retreat</h4>
+          <p>Projected 12% annual ROI • 3BR/2BA • Private beach access</p>
+          <button>Learn More</button>
+        </div>
       </div>
-      <div class="team-member">
-        <img src="https://source.unsplash.com/collection/888146/120x120?sig=2" alt="Joshua Emerick">
-        <h4>Joshua Emerick</h4>
-        <p>Founding Partner</p>
+      <div class="property-card">
+        <img src="https://source.unsplash.com/400x300/?marathon,waterfront" alt="Marathon Villa">
+        <div class="property-info">
+          <h4>Marathon Waterfront Villa</h4>
+          <p>Projected 14% annual ROI • 4BR/3BA • Private dock</p>
+          <button>Learn More</button>
+        </div>
       </div>
-      <div class="team-member">
-        <img src="https://source.unsplash.com/collection/888146/120x120?sig=3" alt="Andy Jimenez">
-        <h4>Andy Jimenez</h4>
-        <p>Founding Partner</p>
+      <div class="property-card">
+        <img src="https://source.unsplash.com/400x300/?key-west,cottage" alt="Key West Cottage">
+        <div class="property-info">
+          <h4>Key West Sunset Cottage</h4>
+          <p>Projected 11% annual ROI • 2BR/1BA • Stunning sunset views</p>
+          <button>Learn More</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact container">
-    <h2 class="section-title">Get in Touch</h2>
-    <p>Fill out the form below to receive our detailed investment prospectus and schedule a call with our founding partners.</p>
-    <a href="#" class="btn-primary">Request Prospectus</a>
+  <section id="founders" class="founders container">
+    <div class="founders-content">
+      <h2>Exclusive Florida Keys Investments</h2>
+      <p>Partner with Arif Sabir, Joshua Emerick, and Andy Jimenez to secure high-return vacation rentals in the most sought-after waterfront locations.</p>
+    </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Diamond Hand Capital. All rights reserved.
+  <footer id="contact" class="container">
+    <p>&copy; 2025 Diamond Hand Capital</p>
+    <p>Email: info@diamondhandcapital.com | Phone: (555) 123-4567</p>
+    <div class="socials">
+      <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+    </div>
   </footer>
 </body>
 </html>
