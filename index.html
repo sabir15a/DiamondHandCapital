@@ -23,73 +23,178 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: var(--clr-bg); color: #333; scroll-behavior: smooth; }
     a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
+    img { display: block; width: 100%; height: auto; }
     button { font-family: inherit; }
 
     /* Header */
-    header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px);
-             box-shadow: var(--shadow); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
     .logo { display: flex; align-items: center; }
     .logo img { height: 40px; margin-right: 0.75rem; }
-    .logo span { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700; color: var(--clr-primary); letter-spacing: 1px; }
+    .logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--clr-primary);
+      letter-spacing: 1px;
+    }
     nav ul { list-style: none; display: flex; gap: 2rem; }
-    nav a { position: relative; font-weight: 500; color: var(--clr-muted); transition: color var(--transition); }
-    nav a:hover, nav a.active { color: var(--clr-primary); }
-    nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--clr-primary); transition: width var(--transition); }
-    nav a:hover::after, nav a.active::after { width: 100%; }
+    nav a {
+      position: relative;
+      font-weight: 500;
+      color: var(--clr-muted);
+      transition: color var(--transition);
+    }
+    nav a:hover,
+    nav a.active { color: var(--clr-primary); }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--clr-primary);
+      transition: width var(--transition);
+    }
+    nav a:hover::after,
+    nav a.active::after { width: 100%; }
 
-    /* Banner (scenic view) */
-    .banner { height: calc(100vh - 80px); margin-top: 80px;
-              background: url('/mnt/data/A_high-resolution_digital_photograph_captures_a_tw.png') center/cover no-repeat;
-              display: flex; align-items: center; justify-content: center; }
-    .banner h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--clr-light);
-                  text-shadow: 0 2px 6px rgba(0,0,0,0.4); text-align: center; }
+    /* Hero Banner Image */
+    .banner-image { margin-top: 80px; }
 
     /* Sections */
     section { padding: 4rem 2rem; }
     .container { max-width: 1200px; margin: 0 auto; }
 
     /* Mission */
-    .mission { background: var(--clr-light); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .mission-content { text-align: center; padding: 2rem; color: #444; line-height: 1.6; }
+    .mission {
+      background: var(--clr-light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .mission-content {
+      text-align: center;
+      padding: 2rem;
+      color: #444;
+      line-height: 1.6;
+    }
     .mission-content p { margin-bottom: 1.25rem; }
 
     /* Feature Cards */
     .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 2rem; }
-    .feature-card { background: var(--clr-light); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow);
-                     text-align: center; transition: transform var(--transition); }
+    .feature-card {
+      background: var(--clr-light);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform var(--transition);
+    }
     .feature-card:hover { transform: translateY(-8px); }
     .feature-card ion-icon { font-size: 2.5rem; color: var(--clr-primary); margin-bottom: 1rem; }
-    .feature-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #222; font-family: 'Playfair Display', serif; }
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #222;
+      font-family: 'Playfair Display', serif;
+    }
     .feature-card p { color: var(--clr-muted); }
 
     /* Listings */
-    .listings h2 { text-align: center; margin-bottom: 2rem; color: var(--clr-primary); font-family: 'Playfair Display', serif; }
+    .listings h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--clr-primary);
+      font-family: 'Playfair Display', serif;
+    }
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2rem; }
-    .property-card { position: relative; overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow);
-                      transition: transform var(--transition), box-shadow var(--transition); }
+    .property-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
     .property-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
     .property-card img { height: 200px; object-fit: cover; }
     .property-info { background: var(--clr-light); padding: 1.5rem; }
-    .property-info h4 { font-size: 1.125rem; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif; }
-    .property-info p { font-size: 0.95rem; margin-bottom: 1rem; color: var(--clr-muted); }
-    .property-info button { background: var(--clr-primary); color: var(--clr-light); padding: 0.75rem 1.5rem;
-                             border-radius: var(--radius); font-weight: 600; transition: background var(--transition); }
+    .property-info h4 {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .property-info p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      color: var(--clr-muted);
+    }
+    .property-info button {
+      background: var(--clr-primary);
+      color: var(--clr-light);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: background var(--transition);
+    }
     .property-info button:hover { background: #004099; }
 
-    /* Founders */
-    .founders-content { background: var(--clr-light); border-radius: var(--radius); box-shadow: var(--shadow);
-                         text-align: center; padding: 2.5rem; }
-    .founders-content h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--clr-primary); font-family: 'Playfair Display', serif; }
-    .founders-content p { color: var(--clr-muted); font-size: 1rem; line-height: 1.6; }
+    /* Meet the Team */
+    .team h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--clr-primary);
+      font-family: 'Playfair Display', serif;
+    }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; }
+    .team-member {
+      background: var(--clr-light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      padding: 2rem;
+    }
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+    .team-member h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .team-member p { color: var(--clr-muted); font-size: 0.9rem; }
 
     /* Footer */
-    footer { text-align: center; color: var(--clr-muted); font-size: 0.9rem; margin-top: 2rem; }
-    .socials a { margin: 0 0.5rem; color: var(--clr-primary); font-size: 1.2rem; transition: color var(--transition); }
+    footer {
+      text-align: center;
+      color: var(--clr-muted);
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    .socials a {
+      margin: 0 0.5rem;
+      color: var(--clr-primary);
+      font-size: 1.2rem;
+      transition: color var(--transition);
+    }
     .socials a:hover { color: #004099; }
 
     @media (max-width: 768px) {
-      .banner h1 { font-size: 2.25rem; padding: 0 1rem; }
       nav ul { gap: 1rem; }
       header { padding: 0.75rem 1rem; }
     }
@@ -98,7 +203,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="/mnt/data/Screen%20Shot%202025-06-07%20at%2010.18.15%20AM.png" alt="Logo">
+      <img src="/mnt/data/aa507c5f-2b15-4c12-8bf4-bb933fe7af3f.png" alt="Logo">
       <span>Diamond Hand Capital</span>
     </div>
     <nav>
@@ -110,10 +215,12 @@
     </nav>
   </header>
 
-  <section class="banner">
-    <h1>Institutional-Grade Real Estate Investments</h1>
+  <!-- Hero Banner Image -->
+  <section class="banner-image">
+    <img src="/mnt/data/aa507c5f-2b15-4c12-8bf4-bb933fe7af3f.png" alt="Florida Keys House Over Water">
   </section>
 
+  <!-- Mission Statement -->
   <section id="mission" class="mission container">
     <div class="mission-content">
       <p>At Diamond Hand Capital, we build long-term value through smart investments and strategic real estate development. Our name reflects the strength, clarity, and resilience we bring to every opportunity.</p>
@@ -122,69 +229,59 @@
     </div>
   </section>
 
+  <!-- Feature Cards -->
   <section id="features" class="features container">
-    <div class="feature-card">
-      <ion-icon name="bar-chart-outline"></ion-icon>
-      <h3>Data-Driven Analysis</h3>
-      <p>Rigorous market research and financial modeling for optimized returns.</p>
-    </div>
-    <div class="feature-card">
-      <ion-icon name="trophy-outline"></ion-icon>
-      <h3>Proven Track Record</h3>
-      <p>Years of successful property acquisitions and superior portfolio performance.</p>
-    </div>
-    <div class="feature-card">
-      <ion-icon name="people-outline"></ion-icon>
-      <h3>Full-Service Management</h3>
-      <p>End-to-end oversight: from acquisition to guest experience and maintenance.</p>
-    </div>
+    <div class="feature-card"><ion-icon name="bar-chart-outline"></ion-icon><h3>Data-Driven Analysis</h3><p>Rigorous market research and financial modeling for optimized returns.</p></div>
+    <div class="feature-card"><ion-icon name="trophy-outline"></ion-icon><h3>Proven Track Record</h3><p>Years of successful property acquisitions and superior portfolio performance.</p></div>
+    <div class="feature-card"><ion-icon name="people-outline"></ion-icon><h3>Full-Service Management</h3><p>End-to-end oversight: from acquisition to guest experience and maintenance.</p></div>
   </section>
 
+  <!-- Listings -->
   <section id="listings" class="listings container">
     <h2>Highlighted Opportunities</h2>
     <div class="cards">
       <div class="property-card">
         <img src="https://source.unsplash.com/400x300/?islamorada,house" alt="Islamorada Retreat">
-        <div class="property-info">
-          <h4>Islamorada Beachfront Retreat</h4>
-          <p>Projected 12% annual ROI • 3BR/2BA • Private beach access</p>
-          <button>Learn More</button>
-        </div>
+        <div class="property-info"><h4>Islamorada Beachfront Retreat</h4><p>Projected 12% annual ROI • 3BR/2BA • Private beach access</p><button>Learn More</button></div>
       </div>
       <div class="property-card">
         <img src="https://source.unsplash.com/400x300/?marathon,waterfront" alt="Marathon Villa">
-        <div class="property-info">
-          <h4>Marathon Waterfront Villa</h4>
-          <p>Projected 14% annual ROI • 4BR/3BA • Private dock</p>
-          <button>Learn More</button>
-        </div>
+        <div class="property-info"><h4>Marathon Waterfront Villa</h4><p>Projected 14% annual ROI • 4BR/3BA • Private dock</p><button>Learn More</button></div>
       </div>
       <div class="property-card">
         <img src="https://source.unsplash.com/400x300/?key-west,cottage" alt="Key West Cottage">
-        <div class="property-info">
-          <h4>Key West Sunset Cottage</h4>
-          <p>Projected 11% annual ROI • 2BR/1BA • Stunning sunset views</p>
-          <button>Learn More</button>
-        </div>
+        <div class="property-info"><h4>Key West Sunset Cottage</h4><p>Projected 11% annual ROI • 2BR/1BA • Stunning sunset views</p><button>Learn More</button></div>
       </div>
     </div>
   </section>
 
-  <section id="founders" class="founders container">
-    <div class="founders-content">
-      <h2>Exclusive Florida Keys Investments</h2>
-      <p>Partner with Arif Sabir, Joshua Emerick, and Andy Jimenez to secure high-return vacation rentals in the most sought-after waterfront locations.</p>
+  <!-- Meet the Team -->
+  <section id="team" class="team container">
+    <h2>Meet the Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Arif Sabir">
+        <h4>Arif Sabir</h4>
+        <p>Founding Partner</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Joshua Emerick">
+        <h4>Joshua Emerick</h4>
+        <p>Founding Partner</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Andy Jimenez">
+        <h4>Andy Jimenez</h4>
+        <p>Founding Partner</p>
+      </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer id="contact" class="container">
     <p>&copy; 2025 Diamond Hand Capital</p>
     <p>Email: info@diamondhandcapital.com | Phone: (555) 123-4567</p>
-    <div class="socials">
-      <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-      <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-      <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
-    </div>
+    <div class="socials"><a href="#"><ion-icon name="logo-facebook"></ion-icon></a><a href="#"><ion-icon name="logo-instagram"></ion-icon></a><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></div>
   </footer>
 </body>
 </html>
