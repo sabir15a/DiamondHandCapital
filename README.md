@@ -1,0 +1,2 @@
+# DiamondHandCapital
+DiamondHandCapital
